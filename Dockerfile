@@ -1,9 +1,10 @@
-# Create image based on the official Node 6 image from dockerhub
 FROM node:carbon
+
+RUN apt update
+RUN apt -y install net-tools dnsutils joe wget 
 
 RUN npm set progress=false && npm config set depth 0 && npm cache clean --force
 
-# Create a directory where our app will be placed
 RUN mkdir -p /ng-app
 RUN chown node:node /ng-app
 
